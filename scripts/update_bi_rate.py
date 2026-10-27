@@ -52,7 +52,6 @@ def main():
         print("URL akhir:", export.url)
         print("Awal respons:", export.text[:1000])
     raise RuntimeError("Respons bukan XLSX; lihat log di atas.")
-        )
 
     # Baca workbook Excel.
     workbook = load_workbook(BytesIO(export.content), data_only=True, read_only=True)
