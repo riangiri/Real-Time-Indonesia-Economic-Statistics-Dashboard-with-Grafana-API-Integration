@@ -1,3 +1,5 @@
+name: Update BI Rate Data
+
 on:
   workflow_dispatch:
   schedule:
