@@ -1,1 +1,1 @@
-# Grafana-Project-Indonesian-Economics-Dashboard-with-API-Connection-
+# Real-Time Indonesian Economic Statistics Dashboard with Grafana API Integration-
