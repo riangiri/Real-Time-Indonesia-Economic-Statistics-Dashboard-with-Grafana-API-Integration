@@ -47,8 +47,11 @@ def main():
 
     content_type = export.headers.get("Content-Type", "").lower()
     if "spreadsheetml" not in content_type and not export.content.startswith(b"PK"):
-        raise RuntimeError(
-            "Respons bukan XLSX. Content-Type: " + content_type
+        print("Status:", export.status_code)
+        print("Content-Type:", content_type)
+        print("URL akhir:", export.url)
+        print("Awal respons:", export.text[:1000])
+    raise RuntimeError("Respons bukan XLSX; lihat log di atas.")
         )
 
     # Baca workbook Excel.
