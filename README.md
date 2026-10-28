@@ -64,7 +64,7 @@ Semua data menggunakan API gratis dan disambungkan melalui infinity plugin grafa
 
 ## Screenshots
 
-Add screenshots here, for example `docs/dashboard-overview.png`:
+for example `docs/dashboard-overview.png`:
 
 <img width="1911" height="817" alt="image" src="https://github.com/user-attachments/assets/4d15e3ad-548f-46fa-a5f0-27d6b5de336b" />
 
