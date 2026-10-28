@@ -5,7 +5,7 @@ Visit realtime dashboard : https://indostats.grafana.net/public-dashboards/b10df
 Dasbor publik Grafana Cloud untuk monitoring real-time nilai tukar, utang, defisit anggaran, indikator ekonomi negara, serta harga komoditas di Indonesia. 
 Dasbor ini dibangun hanya dengan menggunakan sumber data API gratis dan plugin sumber data Infinity grafana.
 
-> **Status:** live and public dan Masih akan ada update beberapa hari kedepan.
+> **Status:** live and public (akan ada update beberapa hari kedepan)
 
 ## Contents
 ## 1. Dashboards at a glance
