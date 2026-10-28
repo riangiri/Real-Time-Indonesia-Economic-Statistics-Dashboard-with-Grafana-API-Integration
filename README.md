@@ -67,9 +67,9 @@ Semua data menggunakan API gratis dan disambungkan melalui infinity plugin grafa
 for example :
 
 <img width="1911" height="817" alt="image" src="https://github.com/user-attachments/assets/4d15e3ad-548f-46fa-a5f0-27d6b5de336b" />
-
+<>
 <img width="1910" height="865" alt="image" src="https://github.com/user-attachments/assets/68d439fa-66bb-4f6b-9fab-e04c619e7f96" />
-
+<>
 <img width="1911" height="937" alt="image" src="https://github.com/user-attachments/assets/34cddf8f-4f36-4ed2-bbf3-cc742961b95b" />
 
 
