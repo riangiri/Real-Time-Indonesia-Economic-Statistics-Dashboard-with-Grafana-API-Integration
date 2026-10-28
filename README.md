@@ -2,46 +2,49 @@
 
 Visit realtime dashboard : https://indostats.grafana.net/public-dashboards/b10df2e20cf5421b8dc73d4986935b42
 
-Dashboard publik di Grafana Cloud yang memantau kurs rupiah, utang pemerintah, defisit APBN, indikator makroekonomi, harga minyak, IHSG, dan BI-Rate. Semua data berasal dari API gratis dan disambungkan melalui plugin Infinity, sehingga tidak diperlukan database atau server sendiri.
+Dashboard publik di Grafana Cloud yang memantau kurs rupiah, utang pemerintah, defisit APBN, indikator makroekonomi, harga minyak, IHSG, dan BI-Rate. 
+Semua data berasal dari API gratis dan disambungkan melalui plugin Infinity, sehingga tidak diperlukan database atau server sendiri.
 
-> **Status:** live and public (akan ada update beberapa hari kedepan)
+> **Status:** live and public (akan ada update dalam beberapa hari kedepan)
 
 ## Contents
-## 1. Dashboards at a glance
+## 1. Gambaran Dashboard
 
-| Dashboard | Status | What it shows |
+| Dashboard | Status | Isi |
 |---|---|---|
-| **Kurs-dashboard** ("Indonesia Statistics Update") | Live, public | Rupiah exchange rates, government debt, APBN deficit, inflation, GDP growth, unemployment, oil prices
-| **IHSG and foreign flow**
+| **Kurs-dashboard** ("Indonesia Statistics Update") | Live, publik | Kurs rupiah, utang pemerintah, defisit APBN, inflasi, pertumbuhan PDB, pengangguran, harga minyak, BI-Rate |
+| **IHSG dan foreign flow** | Live, publik | Harga dan pergerakan IHSG serta aliran dana asing di BEI |
 
 ## 2. Data sources
 
 Semua data menggunakan API gratis dan disambungkan melalui infinity plugin grafana
+Setiap data source hanya mengizinkan hostnya sendiri, dan kredensial disimpan di pengaturan data source, bukan di URL panel.
 
-| Data source | Allowed host | Info|
-|---|---|---|---|
-| `infinity-Kurs-idr-USD-SGD` | `openexchangerates.org` | (free plan allows 1,000 requests a month) |
-| `infinity-frankfurter` | `api.frankfurter.dev` | None | Update setiap 12 jam |
-| `infinity-imf` | `www.imf.org` | None | Update setiap 24 jam |
-| `infinity-worldbank` | `api.worldbank.org` | None | Update setiap 24 hours |
-| `infinity-oilprice` | `api.oilpriceapi.com` | `Authorisasi: Token <key>` | Update setiap 24 hours |
-| `APBN-Decifit-Gauge` | `Kemenkeu APBN-KITA` | No API hanya diolah manual berdasarkan pdf pemaparan paling update |
-| `IHSG-Metrics` | `https://api.Zapi.ink` |
-| `BI-rate` | `(https://www.bi.go.id/id/statistik/indikator/bi-rate.aspx)` | 
+| Data source | Allowed host | Autentikasi | Refresh data | Keterangan |
+|---|---|---|---|---|
+| `infinity-Kurs-idr-USD-SGD` | `openexchangerates.org` | App ID (tersimpan di data source) | Cache panjang | Paket gratis: pembaruan per jam, basis USD, 1.000 permintaan per bulan |
+| `infinity-frankfurter` | `api.frankfurter.dev` | Tidak ada | 12 jam | Kurs referensi ECB, terbit sekali per hari kerja |
+| `infinity-imf` | `www.imf.org` | Tidak ada | 24 jam | Diperbarui IMF 2 kali setahun; tahun terbaru berupa estimasi |
+| `infinity-worldbank` | `api.worldbank.org` | Tidak ada | 24 jam | Data tahunan dengan jeda satu sampai dua tahun |
+| `infinity-oilprice` | `api.oilpriceapi.com` | Header `Authorization: Token <key>` | 24 jam | Harga front-month futures (bukan harga spot harian) |
+| `APBN-Deficit-Gauge` | Tidak ada API | Tidak ada | Manual | Diolah manual dari PDF APBN KiTa terbaru (data inline) |
+| `IHSG-Metrics` | `api.zapi.ink` | - | Harian | Layanan pihak ketiga, bukan feed resmi BEI |
+| `BI-Rate` | `www.bi.go.id` | - | - | [Halaman indikator BI-Rate](https://www.bi.go.id/id/statistik/indikator/bi-rate.aspx) |
 
 ### APBN deficit 
 
-- Untuk data APBN Deficit (Deficit APBN) Diolah secara manual berdasarkan pdf dari website APBN Kita.
-- Skala pengukur: **Min `-3`**, **Maks `0`**, sehingga pengisian bertambah dari 0 menuju batas yang diizinkan di angka -3%.
-- -3% Deficit ini adalah per tahun (**year to date**) -3% cap (Berdasarkan UU No. 17/2003) disebut sebagai legal limit untuk defisit APBN per tahun.
+- Data defisit APBN diolah secara manual berdasarkan PDF APBN KiTa dari Kementerian Keuangan, karena tidak tersedia API gratis.
+- Skala pengukur: **Min `-3`**, **Maks `0`**, sehingga pengisian bertambah dari 0 menuju batas maksimal yang diizinkan di angka -3%.
+- Angka yang ditampilkan adalah akumulasi tahun berjalan (**year to date**). Batas defisit 3% terhadap PDB (UU No. 17 Tahun 2003 tentang Keuangan Negara) berlaku untuk satu tahun penuh.
+- Angka terbaru bersifat sementara dan dapat direvisi.
 
 ### IHSG-Metrics
-- Untuk IHSG menggunakan API dari zapi
+- Data IHSG menggunakan API dari zapi
 - Update data IHSG adalah harian (daily) max jam 17.00 wib
-- Foreign flow adalah aliran dana asing
-- Foreign buy adalah total nilai transaksi pembelian saham yang dilakukan oleh investor asing (baik perorangan maupun institusi dari luar negeri) di BEI dalam 1 hari bursa kerja.
-- Foreign sell adalah total nilai transaksi penjualan saham yang dilakukan oleh investor asing (baik perorangan maupun institusi dari luar negeri) di BEI dalam 1 hari bursa kerja.
-- Net foreign flow adalah selisih dari total transaksi asing untuk pembelian (foreign buy) dan penjualan (foreign sell) yang dilakukan oleh investor asing di BEI dalam periode 1 hari ini/sebelumnya. Apabila (-) artinya dihari yang sama lebih dominan tranksaksi asing jual dari pada beli begitupun sebaliknya.
+- **Foreign flow** adalah aliran dana asing di BEI
+- **Foreign buy** adalah total nilai transaksi pembelian saham yang dilakukan oleh investor asing (baik perorangan maupun institusi dari luar negeri) di BEI dalam 1 hari bursa kerja.
+- **Foreign sell** adalah total nilai transaksi penjualan saham yang dilakukan oleh investor asing (baik perorangan maupun institusi dari luar negeri) di BEI dalam 1 hari bursa kerja.
+- **Net foreign flow** adalah selisih dari total transaksi asing untuk pembelian (foreign buy) dan penjualan (foreign sell) yang dilakukan oleh investor asing di BEI dalam periode 1 hari ini/sebelumnya. Apabila negatif (-) artinya dihari yang sama lebih dominan tranksaksi asing jual dari pada beli begitupun sebaliknya.
 
 ## 3. Security notes
 
@@ -52,15 +55,15 @@ Semua data menggunakan API gratis dan disambungkan melalui infinity plugin grafa
 ## 4. How to reproduce
 
 1. Buat akun Grafana Cloud .
-2. Install Infinity plugin dan tambahkan data source API per row. Sesuaikan dengan **Security, Allowed hosts, key-api**.
+2. Install Infinity plugin, lalu tambahkan data source API per row. Sesuaikan dengan **Security, Allowed hosts, key-api**.
 3. Set Query TTL pada **Cache** tab.
 4. Buat panel panel visualisasi dan isi query, tes setiap query di **Explore**.
 5. Add Visualisasi panel dan text panel bisa dengan footnotes and sumber baru open new tab.
-6. Publish public dashboard, dan siap tes link untuk dibuka di private browser.
+6. Publish public dashboard, dan buka publik link untuk diuji di private browser/browser lainnya.
 
 ## 5. Limitation
-- Dikarenakan semua data diambil dari API dengan pricing free maka ada keterbatasan data yang diambil hingga waktu loading.
-- Beberapa panel dashboard sedang dalam proses pembaruan, sehingga panel akan menampilkan 'No Data' untuk sementara waktu.
+- Semua data diambil dari API dengan paket gratis, sehingga ada batas jumlah permintaan, frekuensi pembaruan, dan waktu muat panel (loading) bisa lebih lama.
+- Beberapa panel dashboard sedang dalam proses pembaruan, sehingga panel hanya menampilkan 'No Data' untuk sementara waktu.
 
 ## Screenshots
 
@@ -68,11 +71,15 @@ for example :
 
 <img width="1911" height="817" alt="image" src="https://github.com/user-attachments/assets/4d15e3ad-548f-46fa-a5f0-27d6b5de336b" />
 
+
 <br>
+
 
 <img width="1910" height="865" alt="image" src="https://github.com/user-attachments/assets/68d439fa-66bb-4f6b-9fab-e04c619e7f96" />
 
+
 <br>
+
 
 <img width="1911" height="937" alt="image" src="https://github.com/user-attachments/assets/34cddf8f-4f36-4ed2-bbf3-cc742961b95b" />
 
