@@ -28,8 +28,8 @@ Setiap data source hanya mengizinkan hostnya sendiri, dan kredensial disimpan di
 | `infinity-worldbank` | `api.worldbank.org` | Tidak ada | 24 jam | Data tahunan dengan jeda satu sampai dua tahun |
 | `infinity-oilprice` | `api.oilpriceapi.com` | Header `Authorization: Token <key>` | 24 jam | Harga front-month futures (bukan harga spot harian) |
 | `APBN-Deficit-Gauge` | Tidak ada API | Tidak ada | Manual | Diolah manual dari PDF APBN KiTa terbaru (data inline) |
-| `IHSG-Metrics` | `api.zapi.ink` | - | Harian | Layanan pihak ketiga, bukan feed resmi BEI |
-| `BI-Rate` | `www.bi.go.id` | - | - | [Halaman indikator BI-Rate](https://www.bi.go.id/id/statistik/indikator/bi-rate.aspx) |
+| `IHSG-Metrics` | `api.zapi.ink` | Api-key (ada) | Harian | Layanan pihak ketiga, bukan feed resmi BEI |
+| `BI-Rate` | `www.bi.go.id` | Tidak ada | - | [Halaman indikator BI-Rate](https://www.bi.go.id/id/statistik/indikator/bi-rate.aspx) |
 
 ### APBN deficit 
 
