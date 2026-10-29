@@ -14,6 +14,7 @@ Semua data berasal dari API gratis dan disambungkan melalui plugin Infinity, seh
 |---|---|---|
 | **Kurs-dashboard** ("Indonesia Statistics Update") | Live, publik | Kurs rupiah, utang pemerintah, defisit APBN, inflasi, pertumbuhan PDB, pengangguran, harga minyak, BI-Rate |
 | **IHSG dan foreign flow** | Live, publik | Harga dan pergerakan IHSG serta aliran dana asing di BEI |
+| **Commodities and Geopolitics** | Coming soon | Coming soon |
 
 ## 2. Data sources
 
@@ -41,10 +42,10 @@ Setiap data source hanya mengizinkan hostnya sendiri, dan kredensial disimpan di
 ### IHSG-Metrics
 - Data IHSG menggunakan API dari zapi
 - Update data IHSG adalah harian (daily) max jam 17.00 wib
-- **Foreign flow** adalah aliran dana asing di BEI
+- **Foreign flow** adalah aliran dana investor asing di Bursa Saham BEI
 - **Foreign buy** adalah total nilai transaksi pembelian saham yang dilakukan oleh investor asing (baik perorangan maupun institusi dari luar negeri) di BEI dalam 1 hari bursa kerja.
 - **Foreign sell** adalah total nilai transaksi penjualan saham yang dilakukan oleh investor asing (baik perorangan maupun institusi dari luar negeri) di BEI dalam 1 hari bursa kerja.
-- **Net foreign flow** adalah selisih dari total transaksi asing untuk pembelian (foreign buy) dan penjualan (foreign sell) yang dilakukan oleh investor asing di BEI dalam periode 1 hari ini/sebelumnya. Apabila negatif (-) artinya dihari yang sama lebih dominan tranksaksi asing jual dari pada beli begitupun sebaliknya.
+- **Net foreign flow** adalah selisih dari total transaksi asing untuk pembelian (foreign buy) dan penjualan (foreign sell) yang dilakukan oleh investor asing di BEI dalam periode 1 hari ini/sebelumnya. Apabila negatif (-) artinya dihari yang sama lebih dominan transaksi asing jual dari pada beli begitupun sebaliknya.
 
 ## 3. Security notes
 
