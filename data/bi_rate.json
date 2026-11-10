@@ -1,7 +1,7 @@
 {
   "source": "Bank Indonesia",
   "source_url": "https://www.bi.go.id/id/statistik/indikator/bi-rate.aspx",
-  "updated_at": "2026-11-09T20:19:37.984063+00:00",
+  "updated_at": "2026-11-10T17:23:37.998607+00:00",
   "note": "Data yang diambil adalah baris yang tersedia pada tabel halaman BI Rate saat ini; halaman dapat menampilkan data per halaman.",
   "data": [
     {
